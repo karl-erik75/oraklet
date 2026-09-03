@@ -1,9 +1,10 @@
 import random
-prize = 100
-loop = True
 
 
-while (loop) == True:
+def gambling(return_prize):
+    prize = 100
+    if return_prize != 0:
+        prize = return_prize
     print ("priset liger på", (prize))
 
 
@@ -12,7 +13,7 @@ while (loop) == True:
 
     if fråga == "nej":
         print ("du van", prize)
-        loop = False
+        bank_func(prize)
 
 
 
@@ -29,12 +30,30 @@ while (loop) == True:
             prize = (prize * 2)
             print (prize)
 
+        gambling(prize)
 
-while (loop) == False:
+
+def bank_func(prize):
+    
     bank = 0
     bank2 = (prize + bank)
+
     print ("du har", bank2)
-    igen = input ("vil du riska mera pengar? ")
+    igen = input ("vill du riska mera pengar? ")
 
     if igen == "ja":
-        loop = True
+        gambling(0)
+
+    elif igen == "nej":
+        store(bank2)
+
+
+def store(bank2):
+
+    luck = input ("vil du sköpa mera tur för 300???")   
+
+    if luck == "ja":
+        gambling(0)
+
+gambling(0)
+
