@@ -1,15 +1,16 @@
 import random
 x = 10
+y = 300
 
 def gambling(return_prize,bank2):
-    print("\033c", end="")
+    # print("\033c", end="")
     prize = 100
     if return_prize != 0:
         prize = return_prize
     print ("priset liger på", (prize))
 
     
-    fråga = input("vil du riska att alt för att få dubelt? ") 
+    fråga = input("vil du riska alt för att få dubelt? ") 
     
 
 
@@ -54,18 +55,21 @@ def bank_func(prize,bank2):
 
 
 def store(bank2):
-    
     global x
-    luck = input ("vil du sköpa mera tur för 300???")   
+    global y
 
+    luck = input("vil du sköpa mera tur för " + str(y))
+    
 
+    
     if luck == "ja":
-        if bank2 > 300:
+        if bank2 > y:
             x = x * 1.3
-
+            bank2 = bank2 - y
+            y = y + 50
             gambling(0,bank2)
 
-        elif bank2 < 300:
+        elif bank2 < y:
             print ("brokie")
             gambling(0,bank2)
 
