@@ -3,68 +3,64 @@ x = 10
 y = 300
 
 def gambling(return_prize,bank2):
-    # print("\033c", end="")
     prize = 100
     if return_prize != 0:
         prize = return_prize
-    print ("priset liger på", (prize))
+    # print("\033c", end="")
 
     
-    fråga = input("vil du riska alt för att få dubelt? ") 
+    fråga = input("priset liger på " + str(prize) + " vil du riska alt för att få dubelt? ") 
     
 
 
     if fråga == "nej":
-        print ("du van", prize)
         bank_func(prize,bank2)
 
     else:
         opp = random.randint(1, 10)
         du = random.randint(1, x)
-        print(x)
-
- 
-
+        # print(x)
 
         if (opp > du):
-            print ("you lost")
+            print ("du förlorade")
             prize = 100
 
         elif (opp < du):
-            print ("you win")
+            print ("du van!")
             prize = (prize * 2)
-            print (prize)
 
 
         gambling(prize,bank2)
 
 
 def bank_func(prize,bank2):
-    
+    print("\033c", end="")
+
     bank = 0
     bank2 = (prize + bank + bank2)
-
+    print ("du van", prize)
     print ("du har", bank2)
     igen = input ("vill du riska mera pengar? ")
 
-    if igen == "ja":
-        gambling(0,bank2)
-
-    elif igen == "nej":
+    if igen == "nej":
         store(bank2)
+
+    else:
+        gambling(0,bank2)
 
 
 def store(bank2):
     global x
     global y
-
-    luck = input("vil du sköpa mera tur för " + str(y))
+    print("\033c", end="")
+    print ("du har", bank2,"kr")
+    luck = input("vil du sköpa mera tur för " + str(y) )
     
 
     
     if luck == "ja":
         if bank2 > y:
-            x = x * 1.3
+            x = x + 1
             bank2 = bank2 - y
             y = y + 50
             gambling(0,bank2)
